@@ -6,7 +6,6 @@ from pathlib import Path
 from collections import defaultdict
 from jinja2 import Template
 
-# 1. TEMPLATE DEFINITIONS
 TABLE_TEMPLATE_HTML = """
 <!DOCTYPE html>
 <html lang="en">
@@ -143,32 +142,68 @@ INDEX_TEMPLATE_HTML = """
 </html>
 """
 
-def generate_static_site(overlap_data, output_dir="genomic-overlap-atlas"):
+def generate_static_site_from_csv(csv_path, output_dir="genomic-overlap-atlas"):
     base_path = Path(output_dir)
     base_path.mkdir(exist_ok=True)
+    
+    print(f"📖 Reading genomic data from {csv_path}...")
+    df = pd.read_csv(csv_path, sep=None, engine='python')
     
     grouped_data = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
     search_index = defaultdict(set)
     
-    for row in overlap_data:
-        row['length'] = row['end'] - row['start']
-        super_c = row['super_cat']
-        sub_c = row['sub_cat']
-        chrom = row['chr']
+    # Flexible column mapping based on standard bedtools/sweep-line headers
+    chr_col = next((c for c in df.columns if 'chr' in c.lower() or c == 'chrom'), df.columns[0])
+    start_col = next((c for c in df.columns if 'start' in c.lower()), df.columns[1])
+    end_col = next((c for c in df.columns if 'end' in c.lower()), df.columns[2])
+    f1_col = next((c for c in df.columns if 'name' in c.lower() or 'feature1' in c.lower() or 'gene' in c.lower()), df.columns[3])
+    f2_col = next((c for c in df.columns if 'feature2' in c.lower() or 'overlap' in c.lower()), df.columns[4] if len(df.columns) > 4 else f1_col)
+
+    for _, row in df.iterrows():
+        chrom = str(row[chr_col])
+        try:
+            start = int(row[start_col])
+            end = int(row[end_col])
+        except ValueError:
+            continue
+            
+        f1 = str(row[f1_col])
+        f2 = str(row[f2_col])
+        length = end - start
         
-        grouped_data[super_c][sub_c][chrom].append(row)
+        # Automatic biological categorization rule
+        coding_keywords = ['cds', 'exon', 'gene', 'transcript', 'protein']
+        is_f1_coding = any(k in f1.lower() for k in coding_keywords)
+        is_f2_coding = any(k in f2.lower() for k in coding_keywords)
         
-        gene_name = row['feature1']
-        safe_super = super_c.replace(" ", "_")
-        safe_sub = sub_c.replace(" ", "_")
+        if is_f1_coding and is_f2_coding:
+            super_cat = "Protein-Coding / Protein-Coding"
+        elif is_f1_coding or is_f2_coding:
+            super_cat = "Protein-Coding / Non-Coding"
+        else:
+            super_cat = "Non-Coding / Non-Coding"
+            
+        sub_cat = f"{f1[:15]} vs {f2[:15]}"
+        
+        record = {
+            'chr': chrom, 'start': start, 'end': end,
+            'feature1': f1, 'feature2': f2, 'length': length,
+            'super_cat': super_cat, 'sub_cat': sub_cat
+        }
+        
+        grouped_data[super_cat][sub_cat][chrom].append(record)
+        
+        safe_super = super_cat.replace(" ", "_")
+        safe_sub = sub_cat.replace(" ", "_")
         target_url = f"{safe_super}/{safe_sub}/{chrom}_page_1.html"
-        search_index[gene_name.upper()].add(target_url)
+        search_index[f1.upper()].add(target_url)
 
     table_tpl = Template(TABLE_TEMPLATE_HTML)
     index_tpl = Template(INDEX_TEMPLATE_HTML)
     
     directory_tree_for_index = defaultdict(lambda: defaultdict(list))
     ROWS_PER_PAGE = 5000
+    total_processed = 0
 
     for super_c, sub_cats in grouped_data.items():
         safe_super = super_c.replace(" ", "_")
@@ -181,6 +216,7 @@ def generate_static_site(overlap_data, output_dir="genomic-overlap-atlas"):
                 dir_path.mkdir(parents=True, exist_ok=True)
                 
                 rows.sort(key=lambda x: x['length'], reverse=True)
+                total_processed += len(rows)
                 
                 tsv_filename = f"{chrom}_raw_data.tsv"
                 pd.DataFrame(rows).to_csv(dir_path / tsv_filename, sep='\t', index=False)
@@ -208,15 +244,7 @@ def generate_static_site(overlap_data, output_dir="genomic-overlap-atlas"):
     with open(base_path / "index.html", "w", encoding="utf-8") as f:
         f.write(index_tpl.render(directory_tree=directory_tree_for_index))
         
-    print(f"✅ SSG Build Complete. Hosted {sum(len(r) for s in grouped_data.values() for c in s.values() for r in c.values())} overlaps.")
+    print(f"✅ SSG Build Complete! Successfully processed and hosted {total_processed} real genomic overlaps.")
 
 if __name__ == "__main__":
-    mock_sweep_line_output = [
-        {'chr': 'chr17', 'start': 7668402, 'end': 7687550, 'feature1': 'TP53', 'feature2': 'Enhancer_1', 'super_cat': 'Coding / Non-Coding', 'sub_cat': 'CDS vs cCRE'},
-        {'chr': 'chr17', 'start': 7670000, 'end': 7670050, 'feature1': 'TP53', 'feature2': 'Alu_Repeat', 'super_cat': 'Coding / Non-Coding', 'sub_cat': 'CDS vs Repeats'},
-        {'chr': 'chr1', 'start': 10000, 'end': 15000, 'feature1': 'BRCA1', 'feature2': 'LncRNA_X', 'super_cat': 'Coding / Non-Coding', 'sub_cat': 'CDS vs cCRE'}
-    ]
-    for i in range(6000):
-        mock_sweep_line_output.append({'chr': 'chr1', 'start': 1000+i, 'end': 1050+i, 'feature1': f'GENE_{i}', 'feature2': 'Intron', 'super_cat': 'Coding / Non-Coding', 'sub_cat': 'Introns vs Repeats'})
-        
-    generate_static_site(mock_sweep_line_output)
+    generate_static_site_from_csv("genomic_pairwise_overlaps.csv")
