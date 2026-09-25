@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr22	22201684	22201711	ENSG00000211641.3	CDS|exon|gene|repeat|transcript	27
+chr22	22031008	22031033	ENSG00000211637.2|ENSG00000290847.1	CDS|exon|gene|repeat|transcript	25
+chr22	22162236	22162241	ENSG00000211639.2	CDS|exon|gene|repeat|transcript	5

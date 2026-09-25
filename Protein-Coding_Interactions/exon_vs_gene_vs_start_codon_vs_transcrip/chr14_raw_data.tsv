@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr14	19869140	19869143	ENSG00000176290.8	exon|gene|start_codon|transcript	3
+chr14	94026537	94026540	ENSG00000089723.10	exon|gene|start_codon|transcript	3
+chr14	19743669	19743671	ENSG00000176294.6|ENSG00000182652.4	exon|gene|start_codon|transcript	2

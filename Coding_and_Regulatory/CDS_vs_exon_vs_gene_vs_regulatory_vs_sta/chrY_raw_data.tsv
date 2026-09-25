@@ -1,0 +1,5 @@
+chr	start	end	feature1	feature2	length
+chrY	12904936	12904939	ENSG00000067048.17	CDS|exon|gene|regulatory|start_codon|transcript	3
+chrY	12905779	12905782	ENSG00000067048.17	CDS|exon|gene|regulatory|start_codon|transcript	3
+chrY	13479662	13479665	ENSG00000183878.16	CDS|exon|gene|regulatory|start_codon|transcript	3
+chrY	19744531	19744534	ENSG00000012817.16	CDS|exon|gene|regulatory|start_codon|transcript	3

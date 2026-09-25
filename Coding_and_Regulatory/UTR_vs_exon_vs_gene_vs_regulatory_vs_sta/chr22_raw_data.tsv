@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr22	19479083	19479085	ENSG00000070010.19	UTR|exon|gene|regulatory|start_codon|transcript	2
+chr22	39319595	39319597	ENSG00000100316.16	UTR|exon|gene|regulatory|start_codon|transcript	2
+chr22	19479082	19479083	ENSG00000070010.19	UTR|exon|gene|regulatory|start_codon|transcript	1

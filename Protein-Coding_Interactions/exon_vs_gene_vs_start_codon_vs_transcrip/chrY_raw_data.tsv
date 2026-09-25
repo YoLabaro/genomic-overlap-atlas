@@ -1,0 +1,6 @@
+chr	start	end	feature1	feature2	length
+chrY	20756163	20756166	ENSG00000280969.2	exon|gene|start_codon|transcript	3
+chrY	23198797	23198800	ENSG00000188120.16	exon|gene|start_codon|transcript	3
+chrY	23219740	23219743	ENSG00000205944.12	exon|gene|start_codon|transcript	3
+chrY	24813182	24813185	ENSG00000187191.16	exon|gene|start_codon|transcript	3
+chrY	24834126	24834129	ENSG00000205916.12	exon|gene|start_codon|transcript	3

@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr9	16870645	16870648	ENSG00000173068.19	UTR|exon|gene|regulatory|start_codon|transcript	3
+chr9	86341050	86341053	ENSG00000083223.18	UTR|exon|gene|regulatory|start_codon|transcript	3
+chr9	32552433	32552434	ENSG00000197579.8|ENSG00000235453.12|ENSG00000288684.1	UTR|exon|gene|regulatory|start_codon|transcript	1

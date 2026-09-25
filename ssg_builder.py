@@ -19,8 +19,8 @@ TABLE_TEMPLATE_HTML = """
         body { font-family: Arial, sans-serif; margin: 20px; }
         .header { display: flex; justify-content: space-between; align-items: center; }
         .btn { padding: 8px 16px; background-color: #0073e6; color: white; text-decoration: none; border-radius: 4px; }
-        .pagination { margin-top: 20px; display: flex; gap: 10px; }
-        .page-link { padding: 5px 10px; border: 1px solid #ccc; text-decoration: none; color: black; }
+        .pagination { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .page-link { padding: 5px 10px; border: 1px solid #ccc; text-decoration: none; color: black; margin-bottom: 5px;}
         .page-link.active { background-color: #0073e6; color: white; border-color: #0073e6; }
     </style>
 </head>
@@ -38,8 +38,8 @@ TABLE_TEMPLATE_HTML = """
         <thead>
             <tr>
                 <th>Locus</th>
-                <th>Feature 1</th>
-                <th>Feature 2</th>
+                <th>Feature / Gene ID</th>
+                <th>Interaction Class</th>
                 <th>Overlap Size (bp)</th>
                 <th>Action</th>
             </tr>
@@ -92,7 +92,7 @@ INDEX_TEMPLATE_HTML = """
     <h1>Genomic Overlap Atlas</h1>
     
     <div class="search-container">
-        <input type="text" id="geneSearch" placeholder="Search for a gene (e.g., TP53)...">
+        <input type="text" id="geneSearch" placeholder="Search for a gene (e.g., TP53) or feature...">
         <ul id="searchResults" class="results-list"></ul>
     </div>
 
@@ -130,7 +130,7 @@ INDEX_TEMPLATE_HTML = """
                     found = true;
                     urls.forEach(url => {
                         let li = document.createElement('li');
-                        li.innerHTML = `<a href="${url}">View overlaps containing ${gene}</a>`;
+                        li.innerHTML = `<a href="${url}">View occurrences of ${gene}</a>`;
                         resultsBox.appendChild(li);
                     });
                 }
@@ -142,109 +142,116 @@ INDEX_TEMPLATE_HTML = """
 </html>
 """
 
-def generate_static_site_from_csv(csv_path, output_dir="genomic-overlap-atlas"):
+def determine_super(classes):
+    c = str(classes).lower()
+    if 'coding' in c and 'repetitive' in c: return "Coding and Repeats"
+    if 'coding' in c and 'regulatory' in c: return "Coding and Regulatory"
+    if 'coding' in c: return "Protein-Coding Interactions"
+    if 'repetitive' in c: return "Repetitive Elements"
+    return "Non-Coding Interactions"
+
+def determine_sub(sig, classes):
+    sig_str = str(sig)
+    if '|' in sig_str:
+        return sig_str.replace("|", " vs ")[:40]
+    return str(classes).replace("|", " vs ").capitalize()[:40]
+
+def get_f1(row):
+    return row['gene_ids'] if row['gene_ids'] != 'none' else row['feature_ids']
+
+def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
     base_path = Path(output_dir)
     base_path.mkdir(exist_ok=True)
     
-    print(f"📖 Reading genomic data from {csv_path}...")
-    df = pd.read_csv(csv_path, sep=None, engine='python')
-    
-    grouped_data = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
     search_index = defaultdict(set)
+    directory_tree = defaultdict(lambda: defaultdict(list))
     
-    # Flexible column mapping based on standard bedtools/sweep-line headers
-    chr_col = next((c for c in df.columns if 'chr' in c.lower() or c == 'chrom'), df.columns[0])
-    start_col = next((c for c in df.columns if 'start' in c.lower()), df.columns[1])
-    end_col = next((c for c in df.columns if 'end' in c.lower()), df.columns[2])
-    f1_col = next((c for c in df.columns if 'name' in c.lower() or 'feature1' in c.lower() or 'gene' in c.lower()), df.columns[3])
-    f2_col = next((c for c in df.columns if 'feature2' in c.lower() or 'overlap' in c.lower()), df.columns[4] if len(df.columns) > 4 else f1_col)
-
-    for _, row in df.iterrows():
-        chrom = str(row[chr_col])
-        try:
-            start = int(row[start_col])
-            end = int(row[end_col])
-        except ValueError:
-            continue
+    print(f"📦 Pass 1: Chunking massive dataset {csv_path} without crashing RAM...")
+    
+    chunk_size = 250000
+    for chunk_idx, chunk in enumerate(pd.read_csv(csv_path, chunksize=chunk_size, sep=None, engine='python')):
+        print(f"   -> Processing rows {chunk_idx * chunk_size} to {(chunk_idx + 1) * chunk_size}...")
+        
+        chunk['super_cat'] = chunk['feature_classes'].apply(determine_super)
+        chunk['sub_cat'] = chunk.apply(lambda r: determine_sub(r['feature_signature'], r['feature_classes']), axis=1)
+        chunk['f1'] = chunk.apply(get_f1, axis=1)
+        
+        for (super_c, sub_c, chrom), group in chunk.groupby(['super_cat', 'sub_cat', 'chromosome']):
+            safe_super = super_c.replace(" ", "_").replace("&", "and")
+            safe_sub = sub_c.replace(" ", "_").replace("/", "-")
             
-        f1 = str(row[f1_col])
-        f2 = str(row[f2_col])
-        length = end - start
-        
-        # Automatic biological categorization rule
-        coding_keywords = ['cds', 'exon', 'gene', 'transcript', 'protein']
-        is_f1_coding = any(k in f1.lower() for k in coding_keywords)
-        is_f2_coding = any(k in f2.lower() for k in coding_keywords)
-        
-        if is_f1_coding and is_f2_coding:
-            super_cat = "Protein-Coding / Protein-Coding"
-        elif is_f1_coding or is_f2_coding:
-            super_cat = "Protein-Coding / Non-Coding"
-        else:
-            super_cat = "Non-Coding / Non-Coding"
+            dir_path = base_path / safe_super / safe_sub
+            dir_path.mkdir(parents=True, exist_ok=True)
             
-        sub_cat = f"{f1[:15]} vs {f2[:15]}"
-        
-        record = {
-            'chr': chrom, 'start': start, 'end': end,
-            'feature1': f1, 'feature2': f2, 'length': length,
-            'super_cat': super_cat, 'sub_cat': sub_cat
-        }
-        
-        grouped_data[super_cat][sub_cat][chrom].append(record)
-        
-        safe_super = super_cat.replace(" ", "_")
-        safe_sub = sub_cat.replace(" ", "_")
-        target_url = f"{safe_super}/{safe_sub}/{chrom}_page_1.html"
-        search_index[f1.upper()].add(target_url)
+            out_df = pd.DataFrame({
+                'chr': group['chromosome'],
+                'start': group['start'],
+                'end': group['end'],
+                'feature1': group['f1'],
+                'feature2': group['feature_signature'],
+                'length': group['length']
+            })
+            
+            tsv_file = dir_path / f"{chrom}_raw_data.tsv"
+            out_df.to_csv(tsv_file, mode='a', header=not tsv_file.exists(), sep='\t', index=False)
+            
+            if chrom not in directory_tree[super_c][sub_c]:
+                directory_tree[super_c][sub_c].append(chrom)
+                
+            target_url = f"{safe_super}/{safe_sub}/{chrom}_page_1.html"
+            genes = group[group['gene_ids'] != 'none']['gene_ids'].unique()
+            for g_str in genes:
+                for g in str(g_str).split(','):
+                    search_index[g.strip().upper()].add(target_url)
 
+    print("🗂️ Pass 2: Sorting lengths and generating HTML pages...")
     table_tpl = Template(TABLE_TEMPLATE_HTML)
     index_tpl = Template(INDEX_TEMPLATE_HTML)
-    
-    directory_tree_for_index = defaultdict(lambda: defaultdict(list))
     ROWS_PER_PAGE = 5000
     total_processed = 0
 
-    for super_c, sub_cats in grouped_data.items():
-        safe_super = super_c.replace(" ", "_")
+    for super_c, sub_cats in directory_tree.items():
+        safe_super = super_c.replace(" ", "_").replace("&", "and")
         for sub_c, chroms in sub_cats.items():
-            safe_sub = sub_c.replace(" ", "_")
-            for chrom, rows in chroms.items():
-                directory_tree_for_index[super_c][sub_c].append(chrom)
-                
+            safe_sub = sub_c.replace(" ", "_").replace("/", "-")
+            for chrom in chroms:
                 dir_path = base_path / safe_super / safe_sub
-                dir_path.mkdir(parents=True, exist_ok=True)
+                tsv_file = dir_path / f"{chrom}_raw_data.tsv"
                 
-                rows.sort(key=lambda x: x['length'], reverse=True)
-                total_processed += len(rows)
+                # Sort the generated TSV by length
+                df_chrom = pd.read_csv(tsv_file, sep='\t')
+                df_chrom = df_chrom.sort_values(by='length', ascending=False)
+                df_chrom.to_csv(tsv_file, sep='\t', index=False)
                 
-                tsv_filename = f"{chrom}_raw_data.tsv"
-                pd.DataFrame(rows).to_csv(dir_path / tsv_filename, sep='\t', index=False)
-                
+                rows = df_chrom.to_dict('records')
                 total_rows = len(rows)
+                total_processed += total_rows
                 total_pages = math.ceil(total_rows / ROWS_PER_PAGE)
                 
                 for page_num in range(1, total_pages + 1):
                     start_idx = (page_num - 1) * ROWS_PER_PAGE
-                    end_idx = start_idx + ROWS_PER_PAGE
-                    page_rows = rows[start_idx:end_idx]
+                    page_rows = rows[start_idx : start_idx + ROWS_PER_PAGE]
                     
-                    html_content = table_tpl.render(
+                    html = table_tpl.render(
                         super_cat=super_c, sub_cat=sub_c, chrom=chrom,
                         rows=page_rows, current_page=page_num, total_pages=total_pages,
-                        total_rows=total_rows, tsv_filename=tsv_filename
+                        total_rows=total_rows, tsv_filename=tsv_file.name
                     )
-                    
                     with open(dir_path / f"{chrom}_page_{page_num}.html", "w", encoding="utf-8") as f:
-                        f.write(html_content)
+                        f.write(html)
 
     with open(base_path / "search_index.json", "w") as f:
         json.dump({k: list(v) for k, v in search_index.items()}, f)
 
+    # Sort chromosomes naturally for the index page before rendering
+    for super_c in directory_tree:
+        for sub_c in directory_tree[super_c]:
+            directory_tree[super_c][sub_c].sort(key=lambda x: int(x.replace('chr', '')) if x.replace('chr', '').isdigit() else 999)
+
     with open(base_path / "index.html", "w", encoding="utf-8") as f:
-        f.write(index_tpl.render(directory_tree=directory_tree_for_index))
+        f.write(index_tpl.render(directory_tree=directory_tree))
         
-    print(f"✅ SSG Build Complete! Successfully processed and hosted {total_processed} real genomic overlaps.")
+    print(f"✅ SSG Build Complete! Successfully processed and hosted {total_processed} overlaps.")
 
 if __name__ == "__main__":
-    generate_static_site_from_csv("genomic_pairwise_overlaps.csv")
+    generate_static_site_chunked("genomic_overlap_segments.csv")

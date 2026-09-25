@@ -1,0 +1,15 @@
+chr	start	end	feature1	feature2	length
+chrY	2787265	2787466	ENSG00000184895.8|ENSG00000290840.1	CDS|exon|gene|regulatory|transcript	201
+chrY	19706440	19706617	ENSG00000012817.16	CDS|exon|gene|regulatory|transcript	177
+chrY	2787053	2787203	ENSG00000184895.8|ENSG00000290840.1	CDS|exon|gene|regulatory|transcript	150
+chrY	19744384	19744531	ENSG00000012817.16	CDS|exon|gene|regulatory|transcript	147
+chrY	13479540	13479662	ENSG00000183878.16	CDS|exon|gene|regulatory|transcript	122
+chrY	13704351	13704435	ENSG00000154620.6|ENSG00000290853.1	CDS|exon|gene|regulatory|transcript	84
+chrY	7085897	7085972	ENSG00000092377.15	CDS|exon|gene|regulatory|transcript	75
+chrY	19706278	19706345	ENSG00000012817.16	CDS|exon|gene|regulatory|transcript	67
+chrY	13479253	13479317	ENSG00000183878.16	CDS|exon|gene|regulatory|transcript	64
+chrY	12905782	12905815	ENSG00000067048.17	CDS|exon|gene|regulatory|transcript	33
+chrY	13705224	13705256	ENSG00000154620.6|ENSG00000290853.1	CDS|exon|gene|regulatory|transcript	32
+chrY	13479513	13479540	ENSG00000183878.16	CDS|exon|gene|regulatory|transcript	27
+chrY	2787050	2787053	ENSG00000184895.8|ENSG00000290840.1	CDS|exon|gene|regulatory|transcript	3
+chrY	12904939	12904941	ENSG00000067048.17	CDS|exon|gene|regulatory|transcript	2

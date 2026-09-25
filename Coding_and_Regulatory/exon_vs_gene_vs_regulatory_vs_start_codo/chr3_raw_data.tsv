@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr3	33277512	33277515	ENSG00000153558.17	exon|gene|regulatory|start_codon|transcript	3
+chr3	11568604	11568606	ENSG00000144560.16	exon|gene|regulatory|start_codon|transcript	2
+chr3	179258947	179258949	ENSG00000171121.17	exon|gene|regulatory|start_codon|transcript	2

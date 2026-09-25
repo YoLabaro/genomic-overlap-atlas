@@ -1,0 +1,8 @@
+chr	start	end	feature1	feature2	length
+chrUn_KI270591v1	0	4938	ALR/Alpha_Satellite_0_4938	repeat	4938
+chrUn_KI270591v1	5549	5794	(ATTCC)n_Simple_repeat_5549_5794	repeat	245
+chrUn_KI270591v1	4958	5155	(CCACT)n_Simple_repeat_4958_5155	repeat	197
+chrUn_KI270591v1	5231	5422	(CACTC)n_Simple_repeat_5231_5422	repeat	191
+chrUn_KI270591v1	5467	5549	AluJb_SINE_5467_5549	repeat	82
+chrUn_KI270591v1	5155	5219	AluYj4_SINE_5155_5219	repeat	64
+chrUn_KI270591v1	5423	5467	(TTCCA)n_Simple_repeat_5423_5467	repeat	44

@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr16	1966881	1966884	ENSG00000179580.10	exon|gene|start_codon|transcript	3
+chr16	947399	947401	ENSG00000103227.19	exon|gene|start_codon|transcript	2
+chr16	14200487	14200488	ENSG00000186260.17|ENSG00000262470.2	exon|gene|start_codon|transcript	1

@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr13	49222374	49222377	ENSG00000102539.5	exon|gene|stop_codon|transcript	3
+chr13	52019144	52019147	ENSG00000253710.5	exon|gene|stop_codon|transcript	3
+chr13	98796205	98796207	ENSG00000088387.22	exon|gene|stop_codon|transcript	2

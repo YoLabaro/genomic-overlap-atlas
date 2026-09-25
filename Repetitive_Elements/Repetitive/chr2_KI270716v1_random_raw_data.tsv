@@ -1,0 +1,11 @@
+chr	start	end	feature1	feature2	length
+chr2_KI270716v1_random	13016	153794	ALR/Alpha_Satellite_13016_153794	repeat	140778
+chr2_KI270716v1_random	11198	12533	ALR/Alpha_Satellite_11198_12533	repeat	1335
+chr2_KI270716v1_random	12533	13016	L1PA2_LINE_12533_13016	repeat	483
+chr2_KI270716v1_random	311	405	(GATTCCATTC)n_Simple_repeat_311_405	repeat	94
+chr2_KI270716v1_random	6320	6393	(TGATTCCATT)n_Simple_repeat_6320_6393	repeat	73
+chr2_KI270716v1_random	582	654	(GATTCCATTC)n_Simple_repeat_582_654	repeat	72
+chr2_KI270716v1_random	4210	4281	(GATTCCATTC)n_Simple_repeat_4210_4281	repeat	71
+chr2_KI270716v1_random	5973	6030	(ATGATTCCATTC)n_Simple_repeat_5973_6030	repeat	57
+chr2_KI270716v1_random	10783	10833	(TCCATTCATG)n_Simple_repeat_10783_10833	repeat	50
+chr2_KI270716v1_random	6724	6770	(GATTCCATTC)n_Simple_repeat_6724_6770	repeat	46

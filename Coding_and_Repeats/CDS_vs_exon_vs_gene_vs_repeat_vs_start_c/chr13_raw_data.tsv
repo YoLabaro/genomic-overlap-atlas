@@ -1,0 +1,7 @@
+chr	start	end	feature1	feature2	length
+chr13	30713725	30713728	ENSG00000132965.10	CDS|exon|gene|repeat|start_codon|transcript	3
+chr13	45465036	45465039	ENSG00000136152.15	CDS|exon|gene|repeat|start_codon|transcript	3
+chr13	52848433	52848436	ENSG00000136099.13	CDS|exon|gene|repeat|start_codon|transcript	3
+chr13	95269419	95269422	ENSG00000125257.16	CDS|exon|gene|repeat|start_codon|transcript	3
+chr13	98521849	98521852	ENSG00000102572.15	CDS|exon|gene|repeat|start_codon|transcript	3
+chr13	112382449	112382452	ENSG00000153498.12	CDS|exon|gene|repeat|start_codon|transcript	3

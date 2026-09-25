@@ -1,0 +1,5 @@
+chr	start	end	feature1	feature2	length
+chrUn_KI270372v1	747	1650	ALR/Alpha_Satellite_747_1650	repeat	903
+chrUn_KI270372v1	0	635	ALR/Alpha_Satellite_0_635	repeat	635
+chrUn_KI270372v1	636	711	L1PA3_LINE_636_711	repeat	75
+chrUn_KI270372v1	711	743	A-rich_Low_complexity_711_743	repeat	32

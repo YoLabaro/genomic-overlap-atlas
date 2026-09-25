@@ -1,0 +1,7 @@
+chr	start	end	feature1	feature2	length
+chr7	38257898	38258303	ENSG00000211689.7	UTR|exon|gene|repeat|transcript	405
+chr7	38259038	38259228	ENSG00000211689.7	UTR|exon|gene|repeat|transcript	190
+chr7	38318167	38318350	ENSG00000211695.2	UTR|exon|gene|repeat|transcript	183
+chr7	142618854	142618947	ENSG00000211746.3	UTR|exon|gene|repeat|transcript	93
+chr7	38258953	38259025	ENSG00000211689.7	UTR|exon|gene|repeat|transcript	72
+chr7	142463100	142463116	ENSG00000230099.2	UTR|exon|gene|repeat|transcript	16

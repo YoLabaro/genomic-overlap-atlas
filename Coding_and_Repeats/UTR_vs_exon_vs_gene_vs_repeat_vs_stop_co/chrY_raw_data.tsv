@@ -1,0 +1,7 @@
+chr	start	end	feature1	feature2	length
+chrY	658826	658829	ENSG00000292354.1	UTR|exon|gene|repeat|stop_codon|transcript	3
+chrY	1198926	1198929	ENSG00000292363.1	UTR|exon|gene|repeat|stop_codon|transcript	3
+chrY	1309865	1309868	ENSG00000292357.1	UTR|exon|gene|repeat|stop_codon|transcript	3
+chrY	13334219	13334222	ENSG00000183878.16	UTR|exon|gene|repeat|stop_codon|transcript	3
+chrY	22073727	22073730	ENSG00000169807.10	UTR|exon|gene|repeat|stop_codon|transcript	3
+chrY	22512665	22512668	ENSG00000169789.10	UTR|exon|gene|repeat|stop_codon|transcript	3

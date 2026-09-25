@@ -1,0 +1,5 @@
+chr	start	end	feature1	feature2	length
+chr22	24035517	24035520	ENSG00000099991.18	exon|gene|start_codon|transcript	3
+chr22	29971059	29971062	ENSG00000100330.16	exon|gene|start_codon|transcript	3
+chr22	30468788	30468791	ENSG00000100012.12	exon|gene|start_codon|transcript	3
+chr22	44069161	44069162	ENSG00000188677.15	exon|gene|start_codon|transcript	1

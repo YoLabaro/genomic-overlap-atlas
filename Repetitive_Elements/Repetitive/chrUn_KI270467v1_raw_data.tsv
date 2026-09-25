@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chrUn_KI270467v1	665	3919	SAR_Satellite_659_3919	repeat	3254
+chrUn_KI270467v1	4	659	ALR/Alpha_Satellite_4_665	repeat	655
+chrUn_KI270467v1	659	665	ALR/Alpha_Satellite_4_665|SAR_Satellite_659_3919	repeat	6

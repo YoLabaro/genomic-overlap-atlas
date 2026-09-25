@@ -1,0 +1,7 @@
+chr	start	end	feature1	feature2	length
+chr14	105584153	105584156	ENSG00000211890.4	UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr14	105707167	105707170	ENSG00000211895.5	UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr14	105765913	105765916	ENSG00000211897.9	UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr14	105769236	105769239	ENSG00000211897.9	UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr14	105851965	105851968	ENSG00000211899.10	UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr14	105854342	105854345	ENSG00000211899.10	UTR|exon|gene|regulatory|stop_codon|transcript	3

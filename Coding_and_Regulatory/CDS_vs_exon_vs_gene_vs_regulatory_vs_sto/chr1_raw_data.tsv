@@ -1,0 +1,7 @@
+chr	start	end	feature1	feature2	length
+chr1	75732742	75732745	ENSG00000117054.15	CDS|exon|gene|regulatory|stop_codon|transcript	3
+chr1	17005067	17005070	ENSG00000159363.19|ENSG00000226526.1|ENSG00000288636.1	CDS|exon|gene|regulatory|stop_codon|transcript	3
+chr1	155921384	155921387	ENSG00000132680.11	CDS|exon|gene|regulatory|stop_codon|transcript	3
+chr1	6234885	6234887	ENSG00000116237.16|ENSG00000225077.3	CDS|exon|gene|regulatory|stop_codon|transcript	2
+chr1	10433963	10433965	ENSG00000175279.22|ENSG00000251503.8	CDS|exon|gene|regulatory|stop_codon|transcript	2
+chr1	3858843	3858844	ENSG00000169598.17	CDS|exon|gene|regulatory|stop_codon|transcript	1

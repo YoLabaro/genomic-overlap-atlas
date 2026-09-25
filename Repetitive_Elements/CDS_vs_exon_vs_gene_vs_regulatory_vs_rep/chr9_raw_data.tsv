@@ -1,0 +1,3 @@
+chr	start	end	feature1	feature2	length
+chr9	33617847	33617868	ENSG00000205274.5	CDS|exon|gene|regulatory|repeat|transcript	21
+chr9	33617845	33617847	ENSG00000205274.5	CDS|exon|gene|regulatory|repeat|start_codon|transcript	2

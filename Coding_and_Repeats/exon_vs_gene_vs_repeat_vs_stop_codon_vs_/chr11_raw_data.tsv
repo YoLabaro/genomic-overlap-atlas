@@ -1,0 +1,5 @@
+chr	start	end	feature1	feature2	length
+chr11	60318077	60318080	ENSG00000110079.19	exon|gene|repeat|stop_codon|transcript	3
+chr11	86464081	86464084	ENSG00000151376.19|ENSG00000254733.1	exon|gene|repeat|stop_codon|transcript	3
+chr11	110272910	110272913	ENSG00000137710.17	exon|gene|repeat|stop_codon|transcript	3
+chr11	108767999	108768001	ENSG00000178105.12	exon|gene|repeat|stop_codon|transcript	2

@@ -1,0 +1,5 @@
+chr	start	end	feature1	feature2	length
+chrM	8266	8269	ENSG00000198712.1	exon|gene|stop_codon|transcript	3
+chrM	10763	10766	ENSG00000198886.2|ENSG00000212907.2	exon|gene|stop_codon|transcript	3
+chrM	14145	14148	ENSG00000198786.2	exon|gene|stop_codon|transcript	3
+chrM	9204	9206	ENSG00000198899.2	exon|gene|stop_codon|transcript	2

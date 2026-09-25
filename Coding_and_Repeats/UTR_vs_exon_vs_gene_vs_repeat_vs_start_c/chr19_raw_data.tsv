@@ -1,0 +1,3 @@
+chr	start	end	feature1	feature2	length
+chr19	37758593	37758596	ENSG00000189144.15	UTR|exon|gene|repeat|start_codon|transcript	3
+chr19	49393399	49393400	ENSG00000161609.10	UTR|exon|gene|repeat|start_codon|transcript	1

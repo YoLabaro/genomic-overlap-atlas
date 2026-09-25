@@ -1,0 +1,12 @@
+chr	start	end	feature1	feature2	length
+chr11	5069571	5069574	ENSG00000273085.3	exon|gene|start_codon|transcript	3
+chr11	27721411	27721414	ENSG00000176697.20|ENSG00000255496.1	exon|gene|start_codon|transcript	3
+chr11	54682876	54682879	ENSG00000225997.1	exon|gene|start_codon|transcript	3
+chr11	126358345	126358348	ENSG00000110080.20	exon|gene|start_codon|transcript	3
+chr11	56412695	56412698	ENSG00000272987.1	exon|gene|start_codon|transcript	3
+chr11	56820513	56820516	ENSG00000241356.2	exon|gene|start_codon|transcript	3
+chr11	65858096	65858099	ENSG00000172732.12|ENSG00000172757.13	exon|gene|start_codon|transcript	3
+chr11	67416199	67416202	ENSG00000172508.11|ENSG00000172531.16	exon|gene|start_codon|transcript	3
+chr11	119018282	119018284	ENSG00000118181.11	exon|gene|start_codon|transcript	2
+chr11	5761238	5761239	ENSG00000132256.20|ENSG00000181017.7	exon|gene|start_codon|transcript	1
+chr11	64291784	64291785	ENSG00000182450.14|ENSG00000257069.6	exon|gene|start_codon|transcript	1
