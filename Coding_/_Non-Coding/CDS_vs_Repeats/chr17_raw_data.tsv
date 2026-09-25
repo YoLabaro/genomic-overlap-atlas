@@ -1,0 +1,2 @@
+chr	start	end	feature1	feature2	super_cat	sub_cat	length
+chr17	7670000	7670050	TP53	Alu_Repeat	Coding / Non-Coding	CDS vs Repeats	50

@@ -1,0 +1,2 @@
+chr	start	end	feature1	feature2	super_cat	sub_cat	length
+chr1	10000	15000	BRCA1	LncRNA_X	Coding / Non-Coding	CDS vs cCRE	5000
