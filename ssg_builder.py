@@ -1,6 +1,7 @@
 import os
 import json
 import math
+import itertools
 import pandas as pd
 from pathlib import Path
 from collections import defaultdict
@@ -39,7 +40,7 @@ TABLE_TEMPLATE_HTML = """
             <tr>
                 <th>Locus</th>
                 <th>Gene / Feature ID</th>
-                <th>Raw Signature</th>
+                <th>Full Locus Signature</th>
                 <th>Overlap Size (bp)</th>
                 <th>Action</th>
             </tr>
@@ -142,46 +143,55 @@ INDEX_TEMPLATE_HTML = """
 </html>
 """
 
-def categorize_overlap(sig, classes):
-    # 1. Split the signature and strip white space
+def get_main_super_cat(f1, f2):
+    coding_kws = ['cds', 'exon', 'gene', 'transcript', 'protein', 'start_codon', 'stop_codon', 'utr', 'selenocysteine']
+    c1_coding = any(k in f1.lower() for k in coding_kws)
+    c2_coding = any(k in f2.lower() for k in coding_kws)
+    
+    if c1_coding and c2_coding: return "Protein-Coding / Protein-Coding"
+    elif c1_coding or c2_coding: return "Protein-Coding / Non-Coding"
+    else: return "Non-Coding / Non-Coding"
+
+def route_overlap(sig):
     items = [x.strip() for x in str(sig).split('|')]
     
-    # 2. Delete redundant "fluff" if specific terms are present
+    # Filter out structural fluff if specific features exist
     generic = {'gene', 'transcript', 'exon'}
     specific = [x for x in items if x.lower() not in generic]
     
     if not specific:
-        # If it was literally just "exon|gene", fallback to the best term
-        if 'exon' in [x.lower() for x in items]: specific = ['Exon']
-        elif 'transcript' in [x.lower() for x in items]: specific = ['Transcript']
-        else: specific = ['Gene']
+        if 'exon' in [x.lower() for x in items]: specific = ['exon']
+        elif 'transcript' in [x.lower() for x in items]: specific = ['transcript']
+        else: specific = ['gene']
         
-    # 3. Deduplicate
     seen = set()
-    cleaned = [x for x in specific if not (x.lower() in seen or seen.add(x.lower()))]
+    cleaned = [x.capitalize() for x in specific if not (x.lower() in seen or seen.add(x.lower()))]
     
-    c = str(classes).lower()
+    routes = []
     
-    # 4. Strict Routing Logic
     if len(cleaned) > 2:
-        super_cat = "Complex Interactions"
-        sub_cat = " vs ".join(cleaned)[:60]
-    elif len(cleaned) == 2:
-        sub_cat = f"{cleaned[0]} vs {cleaned[1]}"
-        if 'coding' in c and ('regulatory' in c or 'repetitive' in c):
-            super_cat = "Protein-Coding / Non-Coding"
-        elif 'coding' in c:
-            super_cat = "Protein-Coding / Protein-Coding"
-        else:
-            super_cat = "Non-Coding / Non-Coding"
-    else: # Length is exactly 1 (e.g. CDS overlapping CDS on different genes)
-        sub_cat = f"{cleaned[0]} vs {cleaned[0]}"
-        if 'coding' in c and not ('regulatory' in c or 'repetitive' in c):
-            super_cat = "Protein-Coding / Protein-Coding"
-        else:
-            super_cat = "Non-Coding / Non-Coding"
+        # Route 1: The full complex string to the Complex Interactions folder
+        complex_sub = " vs ".join(cleaned)[:60]
+        routes.append(("Complex Interactions", complex_sub))
+        
+        # Route 2: Extract all clean pairs and map them to the 3 main folders
+        for combo in itertools.combinations(cleaned, 2):
+            super_cat = get_main_super_cat(combo[0], combo[1])
+            sub_cat = f"{combo[0]} vs {combo[1]}"
+            routes.append((super_cat, sub_cat))
             
-    return super_cat, sub_cat
+    elif len(cleaned) == 2:
+        super_cat = get_main_super_cat(cleaned[0], cleaned[1])
+        sub_cat = f"{cleaned[0]} vs {cleaned[1]}"
+        routes.append((super_cat, sub_cat))
+        
+    else: # Length is exactly 1 (e.g. CDS vs CDS)
+        f = cleaned[0]
+        super_cat = get_main_super_cat(f, f)
+        sub_cat = f"{f} vs {f}"
+        routes.append((super_cat, sub_cat))
+        
+    return routes
 
 def get_f1(row):
     return row['gene_ids'] if row['gene_ids'] != 'none' else row['feature_ids']
@@ -193,18 +203,21 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
     search_index = defaultdict(set)
     directory_tree = defaultdict(lambda: defaultdict(list))
     
-    print(f"📦 Pass 1: Chunking dataset {csv_path}...")
+    print(f"📦 Pass 1: Chunking and Multi-Mapping dataset...")
     chunk_size = 250000
     for chunk_idx, chunk in enumerate(pd.read_csv(csv_path, chunksize=chunk_size, sep=None, engine='python')):
         print(f"   -> Processing rows {chunk_idx * chunk_size} to {(chunk_idx + 1) * chunk_size}...")
         
-        # Apply the new strict categories
-        categories = chunk.apply(lambda r: categorize_overlap(r['feature_signature'], r['feature_classes']), axis=1)
-        chunk['super_cat'] = [x[0] for x in categories]
-        chunk['sub_cat'] = [x[1] for x in categories]
+        # Apply the multi-mapping array to each row
+        chunk['routes'] = chunk['feature_signature'].apply(route_overlap)
         chunk['f1'] = chunk.apply(get_f1, axis=1)
         
-        for (super_c, sub_c, chrom), group in chunk.groupby(['super_cat', 'sub_cat', 'chromosome']):
+        # Explode duplicates the row for every route it matches (UX Magic)
+        exploded_chunk = chunk.explode('routes')
+        exploded_chunk['super_cat'] = exploded_chunk['routes'].apply(lambda x: x[0])
+        exploded_chunk['sub_cat'] = exploded_chunk['routes'].apply(lambda x: x[1])
+        
+        for (super_c, sub_c, chrom), group in exploded_chunk.groupby(['super_cat', 'sub_cat', 'chromosome']):
             safe_super = super_c.replace(" ", "_").replace("/", "-")
             safe_sub = sub_c.replace(" ", "_").replace("/", "-")
             
@@ -216,7 +229,7 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
                 'start': group['start'],
                 'end': group['end'],
                 'feature1': group['f1'],
-                'feature2': group['feature_signature'],  # Keep raw signature here so they can see full details in table
+                'feature2': group['feature_signature'], # Keep the full string so they can see the complexity
                 'length': group['length']
             })
             
@@ -238,7 +251,6 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
     ROWS_PER_PAGE = 5000
     total_processed = 0
 
-    # Ensure the 4 main folders appear in a specific, clean order on the website
     ordered_tree = {
         "Protein-Coding / Protein-Coding": directory_tree.get("Protein-Coding / Protein-Coding", {}),
         "Protein-Coding / Non-Coding": directory_tree.get("Protein-Coding / Non-Coding", {}),
@@ -246,7 +258,6 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
         "Complex Interactions": directory_tree.get("Complex Interactions", {})
     }
     
-    # Remove empty super-categories just in case
     ordered_tree = {k: v for k, v in ordered_tree.items() if v}
 
     for super_c, sub_cats in ordered_tree.items():
@@ -254,7 +265,6 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
         for sub_c, chroms in sub_cats.items():
             safe_sub = sub_c.replace(" ", "_").replace("/", "-")
             
-            # Natural sort chromosomes (chr1, chr2... chr10... chrX)
             chroms.sort(key=lambda x: int(x.replace('chr', '')) if x.replace('chr', '').isdigit() else 999)
             
             for chrom in chroms:
@@ -288,7 +298,7 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
     with open(base_path / "index.html", "w", encoding="utf-8") as f:
         f.write(index_tpl.render(directory_tree=ordered_tree))
         
-    print(f"✅ Clean SSG Build Complete! Hosted {total_processed} overlaps mapped to 4 core folders.")
+    print(f"✅ Clean SSG Build Complete! Multi-mapped {total_processed} overlaps to 4 strict folders.")
 
 if __name__ == "__main__":
     generate_static_site_chunked("genomic_overlap_segments.csv")

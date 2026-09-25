@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protein-Coding / Protein-Coding | Start_codon vs Stop_codon | chr12</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .btn { padding: 8px 16px; background-color: #0073e6; color: white; text-decoration: none; border-radius: 4px; }
+        .pagination { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .page-link { padding: 5px 10px; border: 1px solid #ccc; text-decoration: none; color: black; margin-bottom: 5px;}
+        .page-link.active { background-color: #0073e6; color: white; border-color: #0073e6; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Start_codon vs Stop_codon (chr12)</h1>
+        <div>
+            <a href="../../index.html" class="btn">🏠 Home</a>
+            <a href="chr12_raw_data.tsv" class="btn" download>💾 Download Full TSV</a>
+        </div>
+    </div>
+    <p>Showing page 1 of 1 (7 total overlaps found).</p>
+    
+    <table id="overlapTable" class="display">
+        <thead>
+            <tr>
+                <th>Locus</th>
+                <th>Gene / Feature ID</th>
+                <th>Full Locus Signature</th>
+                <th>Overlap Size (bp)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>chr12:242731-242733</td>
+                <td>ENSG00000010379.16</td>
+                <td>CDS|UTR|exon|gene|start_codon|stop_codon|transcript</td>
+                <td>2</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr12:242731-242733" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr12:54283886-54283888</td>
+                <td>ENSG00000135486.19|ENSG00000258344.1</td>
+                <td>CDS|UTR|exon|gene|regulatory|start_codon|stop_codon|transcript</td>
+                <td>2</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr12:54283886-54283888" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr12:55719107-55719109</td>
+                <td>ENSG00000135441.8|ENSG00000258311.5</td>
+                <td>CDS|UTR|exon|gene|regulatory|start_codon|stop_codon|transcript</td>
+                <td>2</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr12:55719107-55719109" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr12:120539462-120539464</td>
+                <td>ENSG00000022840.17</td>
+                <td>CDS|UTR|exon|gene|regulatory|start_codon|stop_codon|transcript</td>
+                <td>2</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr12:120539462-120539464" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr12:68696824-68696826</td>
+                <td>ENSG00000111581.10</td>
+                <td>CDS|UTR|exon|gene|start_codon|stop_codon|transcript</td>
+                <td>2</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr12:68696824-68696826" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr12:50006546-50006547</td>
+                <td>ENSG00000161800.13</td>
+                <td>CDS|UTR|exon|gene|regulatory|start_codon|stop_codon|transcript</td>
+                <td>1</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr12:50006546-50006547" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr12:66138144-66138145</td>
+                <td>ENSG00000155957.19|ENSG00000228144.2</td>
+                <td>CDS|UTR|exon|gene|start_codon|stop_codon|transcript</td>
+                <td>1</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr12:66138144-66138145" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        
+            <a href="page_1.html" class="page-link active">Page 1</a>
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {$('#overlapTable').DataTable({
+                "order": [[ 3, "desc" ]] 
+            });
+        });
+    </script>
+</body>
+</html>

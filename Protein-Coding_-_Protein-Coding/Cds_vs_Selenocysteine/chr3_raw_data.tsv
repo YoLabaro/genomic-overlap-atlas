@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr3	49358131	49358134	ENSG00000233276.9|ENSG00000290318.1	CDS|Selenocysteine|exon|gene|regulatory|transcript	3
+chr3	53885830	53885833	ENSG00000113811.12	CDS|Selenocysteine|UTR|exon|gene|transcript	3
+chr3	126607910	126607913	ENSG00000197763.20	CDS|Selenocysteine|exon|gene|transcript	3

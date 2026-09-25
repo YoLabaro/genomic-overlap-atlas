@@ -1,7 +1,0 @@
-chr	start	end	feature1	feature2	length
-chr15	19965098	19965101	ENSG00000188403.7	CDS|exon|gene|start_codon|transcript	3
-chr15	19988114	19988117	ENSG00000259490.2	CDS|exon|gene|start_codon|transcript	3
-chr15	21718242	21718245	ENSG00000281179.1	CDS|exon|gene|start_codon|transcript	3
-chr15	21742796	21742799	ENSG00000278263.2	CDS|exon|gene|start_codon|transcript	3
-chr15	22160865	22160868	ENSG00000270505.1	CDS|exon|gene|start_codon|transcript	3
-chr15	22185399	22185402	ENSG00000259261.2	CDS|exon|gene|start_codon|transcript	3

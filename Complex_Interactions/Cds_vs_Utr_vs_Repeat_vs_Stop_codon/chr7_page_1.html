@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complex Interactions | Cds vs Utr vs Repeat vs Stop_codon | chr7</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .btn { padding: 8px 16px; background-color: #0073e6; color: white; text-decoration: none; border-radius: 4px; }
+        .pagination { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .page-link { padding: 5px 10px; border: 1px solid #ccc; text-decoration: none; color: black; margin-bottom: 5px;}
+        .page-link.active { background-color: #0073e6; color: white; border-color: #0073e6; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cds vs Utr vs Repeat vs Stop_codon (chr7)</h1>
+        <div>
+            <a href="../../index.html" class="btn">🏠 Home</a>
+            <a href="chr7_raw_data.tsv" class="btn" download>💾 Download Full TSV</a>
+        </div>
+    </div>
+    <p>Showing page 1 of 1 (7 total overlaps found).</p>
+    
+    <table id="overlapTable" class="display">
+        <thead>
+            <tr>
+                <th>Locus</th>
+                <th>Gene / Feature ID</th>
+                <th>Full Locus Signature</th>
+                <th>Overlap Size (bp)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>chr7:48018510-48018513</td>
+                <td>ENSG00000164744.14</td>
+                <td>CDS|UTR|exon|gene|repeat|stop_codon|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:48018510-48018513" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr7:102567050-102567053</td>
+                <td>ENSG00000168255.20|ENSG00000270249.2|ENSG00000285437.2</td>
+                <td>CDS|UTR|exon|gene|repeat|stop_codon|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:102567050-102567053" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr7:103328934-103328937</td>
+                <td>ENSG00000105819.15|ENSG00000105821.15|ENSG00000161057.13</td>
+                <td>CDS|UTR|exon|gene|repeat|stop_codon|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:103328934-103328937" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr7:106270101-106270104</td>
+                <td>ENSG00000105835.13</td>
+                <td>CDS|UTR|exon|gene|repeat|stop_codon|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:106270101-106270104" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr7:124827549-124827552</td>
+                <td>ENSG00000128513.16</td>
+                <td>CDS|UTR|exon|gene|repeat|stop_codon|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:124827549-124827552" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr7:149251316-149251319</td>
+                <td>ENSG00000170260.9</td>
+                <td>CDS|UTR|exon|gene|repeat|stop_codon|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:149251316-149251319" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr7:151037287-151037290</td>
+                <td>ENSG00000197150.13</td>
+                <td>CDS|UTR|exon|gene|repeat|stop_codon|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:151037287-151037290" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        
+            <a href="page_1.html" class="page-link active">Page 1</a>
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {$('#overlapTable').DataTable({
+                "order": [[ 3, "desc" ]] 
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,0 @@
-chr	start	end	feature1	feature2	length
-chr7	38240023	38240026	ENSG00000227191.8	UTR|exon|gene|stop_codon|transcript	3
-chr7	142793138	142793141	ENSG00000211751.9	UTR|exon|gene|stop_codon|transcript	3
-chr7	142802526	142802528	ENSG00000211772.11	UTR|exon|gene|stop_codon|transcript	2

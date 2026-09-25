@@ -1,4 +1,0 @@
-chr	start	end	feature1	feature2	length
-chr19	45419410	45419413	ENSG00000012061.17	exon|gene|regulatory|stop_codon|transcript	3
-chr19	49017967	49017970	ENSG00000268655.3	exon|gene|regulatory|stop_codon|transcript	3
-chr19	17216336	17216338	ENSG00000053501.14	exon|gene|regulatory|stop_codon|transcript	2

@@ -1,0 +1,5 @@
+chr	start	end	feature1	feature2	length
+chrY	1212631	1212634	ENSG00000292363.1	UTR|exon|gene|start_codon|transcript	3
+chrY	2425209	2425212	ENSG00000292338.1	CDS|UTR|exon|gene|start_codon|transcript	3
+chrY	2500922	2500925	ENSG00000292338.1|ENSG00000292345.1	CDS|UTR|exon|gene|start_codon|transcript	3
+chrY	57184263	57184266	ENSG00000292373.1	CDS|UTR|exon|gene|start_codon|transcript	3

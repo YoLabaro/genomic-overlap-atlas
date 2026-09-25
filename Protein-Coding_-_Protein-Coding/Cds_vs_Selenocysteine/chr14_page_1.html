@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protein-Coding / Protein-Coding | Cds vs Selenocysteine | chr14</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .btn { padding: 8px 16px; background-color: #0073e6; color: white; text-decoration: none; border-radius: 4px; }
+        .pagination { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .page-link { padding: 5px 10px; border: 1px solid #ccc; text-decoration: none; color: black; margin-bottom: 5px;}
+        .page-link.active { background-color: #0073e6; color: white; border-color: #0073e6; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cds vs Selenocysteine (chr14)</h1>
+        <div>
+            <a href="../../index.html" class="btn">🏠 Home</a>
+            <a href="chr14_raw_data.tsv" class="btn" download>💾 Download Full TSV</a>
+        </div>
+    </div>
+    <p>Showing page 1 of 1 (4 total overlaps found).</p>
+    
+    <table id="overlapTable" class="display">
+        <thead>
+            <tr>
+                <th>Locus</th>
+                <th>Gene / Feature ID</th>
+                <th>Full Locus Signature</th>
+                <th>Overlap Size (bp)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>chr14:64942606-64942609</td>
+                <td>ENSG00000125954.13|ENSG00000176153.13|ENSG00000258289.10</td>
+                <td>CDS|Selenocysteine|exon|gene|regulatory|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr14:64942606-64942609" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr14:80202712-80202715</td>
+                <td>ENSG00000211448.14</td>
+                <td>CDS|Selenocysteine|UTR|exon|gene|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr14:80202712-80202715" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr14:80203111-80203114</td>
+                <td>ENSG00000211448.14</td>
+                <td>CDS|Selenocysteine|UTR|exon|gene|regulatory|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr14:80203111-80203114" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr14:101562003-101562006</td>
+                <td>ENSG00000197406.8|ENSG00000258498.10</td>
+                <td>CDS|Selenocysteine|UTR|exon|gene|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr14:101562003-101562006" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        
+            <a href="page_1.html" class="page-link active">Page 1</a>
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {$('#overlapTable').DataTable({
+                "order": [[ 3, "desc" ]] 
+            });
+        });
+    </script>
+</body>
+</html>
