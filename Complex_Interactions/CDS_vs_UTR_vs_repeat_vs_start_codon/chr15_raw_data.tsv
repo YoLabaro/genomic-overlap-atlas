@@ -1,0 +1,4 @@
+chr	start	end	feature1	feature2	length
+chr15	63529141	63529144	ENSG00000140455.17	CDS|UTR|exon|gene|repeat|start_codon|transcript	3
+chr15	82628456	82628459	ENSG00000214575.10	CDS|UTR|exon|gene|repeat|start_codon|transcript	3
+chr15	70898394	70898395	ENSG00000137821.12	CDS|UTR|exon|gene|repeat|start_codon|transcript	1

@@ -1,0 +1,15 @@
+chr	start	end	feature1	feature2	length
+chr13	30956918	30956921	ENSG00000175664.10	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	49191221	49191224	ENSG00000102531.16	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	49265894	49265897	ENSG00000102543.14	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	49265907	49265910	ENSG00000102543.14	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	50934901	50934904	ENSG00000136104.21	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	50969961	50969964	ENSG00000136104.21	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	113149056	113149059	ENSG00000126218.12	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	51817048	51817051	ENSG00000281106.4|ENSG00000285444.1	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	57666695	57666698	ENSG00000118946.12	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	98845943	98845946	ENSG00000088387.22	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	114222504	114222507	ENSG00000283361.3	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	102872344	102872347	ENSG00000134899.24|ENSG00000270181.3	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	3
+chr13	50969931	50969932	ENSG00000136104.21	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	1
+chr13	98794747	98794748	ENSG00000088387.22	CDS|UTR|exon|gene|regulatory|stop_codon|transcript	1

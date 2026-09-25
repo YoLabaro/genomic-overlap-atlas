@@ -1,0 +1,7 @@
+chr	start	end	feature1	feature2	length
+chr13	24278700	24278703	ENSG00000182957.16|ENSG00000273167.1	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr13	42574303	42574306	ENSG00000120659.16	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr13	99606695	99606698	ENSG00000125246.16	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr13	113297434	113297437	ENSG00000185896.11	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr13	113863917	113863920	ENSG00000183087.15	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr13	99086350	99086351	ENSG00000088387.22	CDS|exon|gene|regulatory|repeat|start_codon|transcript	1

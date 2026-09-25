@@ -1,0 +1,9 @@
+chr	start	end	feature1	feature2	length
+chrM	2589	2745	ENSG00000210082.2	exon|gene|repeat|transcript	156
+chrM	3229	3304	ENSG00000209082.1	exon|gene|repeat|transcript	75
+chrM	4331	4400	ENSG00000210107.1	exon|gene|repeat|transcript	69
+chrM	7447	7514	ENSG00000210151.2	exon|gene|repeat|transcript	67
+chrM	16204	16249	(CAACTAT)n_Simple_repeat_16204_16249	repeat	45
+chrM	4328	4331	ENSG00000210100.1|ENSG00000210107.1	exon|gene|repeat|transcript	3
+chrM	3304	3306	tRNA-Leu-TTA(m)_tRNA_3229_3307	repeat	2
+chrM	3306	3307	ENSG00000198888.2	exon|gene|repeat|transcript	1

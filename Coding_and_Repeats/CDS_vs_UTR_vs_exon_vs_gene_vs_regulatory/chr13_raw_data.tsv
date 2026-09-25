@@ -1,9 +1,0 @@
-chr	start	end	feature1	feature2	length
-chr13	46257177	46257274	ENSG00000173988.14	CDS|UTR|exon|gene|regulatory|repeat|transcript	97
-chr13	32444031	32444090	ENSG00000244754.9	CDS|UTR|exon|gene|regulatory|repeat|transcript	59
-chr13	29480233	29480285	ENSG00000132938.22|ENSG00000179141.9	CDS|UTR|exon|gene|regulatory|repeat|transcript	52
-chr13	46257135	46257174	ENSG00000173988.14	CDS|UTR|exon|gene|regulatory|repeat|transcript	39
-chr13	20567979	20567997	ENSG00000032742.18	CDS|UTR|exon|gene|regulatory|repeat|transcript	18
-chr13	77698422	77698437	ENSG00000139737.23	CDS|UTR|exon|gene|regulatory|repeat|transcript	15
-chr13	20567976	20567979	ENSG00000032742.18	CDS|UTR|exon|gene|regulatory|repeat|start_codon|transcript	3
-chr13	46257174	46257177	ENSG00000173988.14	CDS|UTR|exon|gene|regulatory|repeat|stop_codon|transcript	3

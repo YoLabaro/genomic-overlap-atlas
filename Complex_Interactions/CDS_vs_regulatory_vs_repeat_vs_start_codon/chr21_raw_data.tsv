@@ -1,0 +1,5 @@
+chr	start	end	feature1	feature2	length
+chr21	37072145	37072148	ENSG00000185808.14	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr21	41511962	41511965	ENSG00000184012.14	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr21	42201675	42201678	ENSG00000160179.19	CDS|exon|gene|regulatory|repeat|start_codon|transcript	3
+chr21	45405231	45405233	ENSG00000182871.16	CDS|exon|gene|regulatory|repeat|start_codon|transcript	2

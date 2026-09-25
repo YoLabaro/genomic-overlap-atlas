@@ -1,0 +1,3 @@
+chr	start	end	feature1	feature2	length
+chr19	15380374	15380377	ENSG00000011243.19|ENSG00000268189.2	CDS|UTR|exon|gene|regulatory|repeat|stop_codon|transcript	3
+chr19	45780330	45780333	ENSG00000104936.20|ENSG00000268434.5	CDS|UTR|exon|gene|regulatory|repeat|stop_codon|transcript	3

@@ -38,8 +38,8 @@ TABLE_TEMPLATE_HTML = """
         <thead>
             <tr>
                 <th>Locus</th>
-                <th>Feature / Gene ID</th>
-                <th>Interaction Class</th>
+                <th>Gene / Feature ID</th>
+                <th>Raw Signature</th>
                 <th>Overlap Size (bp)</th>
                 <th>Action</th>
             </tr>
@@ -102,7 +102,7 @@ INDEX_TEMPLATE_HTML = """
         <ul>
         {% for sub_cat, chroms in sub_cats.items() %}
             <li>📁 <strong>{{ sub_cat }}</strong> 
-                ({% for chrom in chroms %}<a href="{{ super_cat|replace(' ', '_') }}/{{ sub_cat|replace(' ', '_') }}/{{ chrom }}_page_1.html">{{ chrom }}</a>{% if not loop.last %}, {% endif %}{% endfor %})
+                ({% for chrom in chroms %}<a href="{{ super_cat|replace(' ', '_')|replace('/', '-') }}/{{ sub_cat|replace(' ', '_')|replace('/', '-') }}/{{ chrom }}_page_1.html">{{ chrom }}</a>{% if not loop.last %}, {% endif %}{% endfor %})
             </li>
         {% endfor %}
         </ul>
@@ -142,19 +142,46 @@ INDEX_TEMPLATE_HTML = """
 </html>
 """
 
-def determine_super(classes):
+def categorize_overlap(sig, classes):
+    # 1. Split the signature and strip white space
+    items = [x.strip() for x in str(sig).split('|')]
+    
+    # 2. Delete redundant "fluff" if specific terms are present
+    generic = {'gene', 'transcript', 'exon'}
+    specific = [x for x in items if x.lower() not in generic]
+    
+    if not specific:
+        # If it was literally just "exon|gene", fallback to the best term
+        if 'exon' in [x.lower() for x in items]: specific = ['Exon']
+        elif 'transcript' in [x.lower() for x in items]: specific = ['Transcript']
+        else: specific = ['Gene']
+        
+    # 3. Deduplicate
+    seen = set()
+    cleaned = [x for x in specific if not (x.lower() in seen or seen.add(x.lower()))]
+    
     c = str(classes).lower()
-    if 'coding' in c and 'repetitive' in c: return "Coding and Repeats"
-    if 'coding' in c and 'regulatory' in c: return "Coding and Regulatory"
-    if 'coding' in c: return "Protein-Coding Interactions"
-    if 'repetitive' in c: return "Repetitive Elements"
-    return "Non-Coding Interactions"
-
-def determine_sub(sig, classes):
-    sig_str = str(sig)
-    if '|' in sig_str:
-        return sig_str.replace("|", " vs ")[:40]
-    return str(classes).replace("|", " vs ").capitalize()[:40]
+    
+    # 4. Strict Routing Logic
+    if len(cleaned) > 2:
+        super_cat = "Complex Interactions"
+        sub_cat = " vs ".join(cleaned)[:60]
+    elif len(cleaned) == 2:
+        sub_cat = f"{cleaned[0]} vs {cleaned[1]}"
+        if 'coding' in c and ('regulatory' in c or 'repetitive' in c):
+            super_cat = "Protein-Coding / Non-Coding"
+        elif 'coding' in c:
+            super_cat = "Protein-Coding / Protein-Coding"
+        else:
+            super_cat = "Non-Coding / Non-Coding"
+    else: # Length is exactly 1 (e.g. CDS overlapping CDS on different genes)
+        sub_cat = f"{cleaned[0]} vs {cleaned[0]}"
+        if 'coding' in c and not ('regulatory' in c or 'repetitive' in c):
+            super_cat = "Protein-Coding / Protein-Coding"
+        else:
+            super_cat = "Non-Coding / Non-Coding"
+            
+    return super_cat, sub_cat
 
 def get_f1(row):
     return row['gene_ids'] if row['gene_ids'] != 'none' else row['feature_ids']
@@ -166,18 +193,19 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
     search_index = defaultdict(set)
     directory_tree = defaultdict(lambda: defaultdict(list))
     
-    print(f"📦 Pass 1: Chunking massive dataset {csv_path} without crashing RAM...")
-    
+    print(f"📦 Pass 1: Chunking dataset {csv_path}...")
     chunk_size = 250000
     for chunk_idx, chunk in enumerate(pd.read_csv(csv_path, chunksize=chunk_size, sep=None, engine='python')):
         print(f"   -> Processing rows {chunk_idx * chunk_size} to {(chunk_idx + 1) * chunk_size}...")
         
-        chunk['super_cat'] = chunk['feature_classes'].apply(determine_super)
-        chunk['sub_cat'] = chunk.apply(lambda r: determine_sub(r['feature_signature'], r['feature_classes']), axis=1)
+        # Apply the new strict categories
+        categories = chunk.apply(lambda r: categorize_overlap(r['feature_signature'], r['feature_classes']), axis=1)
+        chunk['super_cat'] = [x[0] for x in categories]
+        chunk['sub_cat'] = [x[1] for x in categories]
         chunk['f1'] = chunk.apply(get_f1, axis=1)
         
         for (super_c, sub_c, chrom), group in chunk.groupby(['super_cat', 'sub_cat', 'chromosome']):
-            safe_super = super_c.replace(" ", "_").replace("&", "and")
+            safe_super = super_c.replace(" ", "_").replace("/", "-")
             safe_sub = sub_c.replace(" ", "_").replace("/", "-")
             
             dir_path = base_path / safe_super / safe_sub
@@ -188,7 +216,7 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
                 'start': group['start'],
                 'end': group['end'],
                 'feature1': group['f1'],
-                'feature2': group['feature_signature'],
+                'feature2': group['feature_signature'],  # Keep raw signature here so they can see full details in table
                 'length': group['length']
             })
             
@@ -210,15 +238,29 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
     ROWS_PER_PAGE = 5000
     total_processed = 0
 
-    for super_c, sub_cats in directory_tree.items():
-        safe_super = super_c.replace(" ", "_").replace("&", "and")
+    # Ensure the 4 main folders appear in a specific, clean order on the website
+    ordered_tree = {
+        "Protein-Coding / Protein-Coding": directory_tree.get("Protein-Coding / Protein-Coding", {}),
+        "Protein-Coding / Non-Coding": directory_tree.get("Protein-Coding / Non-Coding", {}),
+        "Non-Coding / Non-Coding": directory_tree.get("Non-Coding / Non-Coding", {}),
+        "Complex Interactions": directory_tree.get("Complex Interactions", {})
+    }
+    
+    # Remove empty super-categories just in case
+    ordered_tree = {k: v for k, v in ordered_tree.items() if v}
+
+    for super_c, sub_cats in ordered_tree.items():
+        safe_super = super_c.replace(" ", "_").replace("/", "-")
         for sub_c, chroms in sub_cats.items():
             safe_sub = sub_c.replace(" ", "_").replace("/", "-")
+            
+            # Natural sort chromosomes (chr1, chr2... chr10... chrX)
+            chroms.sort(key=lambda x: int(x.replace('chr', '')) if x.replace('chr', '').isdigit() else 999)
+            
             for chrom in chroms:
                 dir_path = base_path / safe_super / safe_sub
                 tsv_file = dir_path / f"{chrom}_raw_data.tsv"
                 
-                # Sort the generated TSV by length
                 df_chrom = pd.read_csv(tsv_file, sep='\t')
                 df_chrom = df_chrom.sort_values(by='length', ascending=False)
                 df_chrom.to_csv(tsv_file, sep='\t', index=False)
@@ -243,15 +285,10 @@ def generate_static_site_chunked(csv_path, output_dir="genomic-overlap-atlas"):
     with open(base_path / "search_index.json", "w") as f:
         json.dump({k: list(v) for k, v in search_index.items()}, f)
 
-    # Sort chromosomes naturally for the index page before rendering
-    for super_c in directory_tree:
-        for sub_c in directory_tree[super_c]:
-            directory_tree[super_c][sub_c].sort(key=lambda x: int(x.replace('chr', '')) if x.replace('chr', '').isdigit() else 999)
-
     with open(base_path / "index.html", "w", encoding="utf-8") as f:
-        f.write(index_tpl.render(directory_tree=directory_tree))
+        f.write(index_tpl.render(directory_tree=ordered_tree))
         
-    print(f"✅ SSG Build Complete! Successfully processed and hosted {total_processed} overlaps.")
+    print(f"✅ Clean SSG Build Complete! Hosted {total_processed} overlaps mapped to 4 core folders.")
 
 if __name__ == "__main__":
     generate_static_site_chunked("genomic_overlap_segments.csv")

@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complex Interactions | CDS vs UTR vs repeat | chr4</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .btn { padding: 8px 16px; background-color: #0073e6; color: white; text-decoration: none; border-radius: 4px; }
+        .pagination { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+        .page-link { padding: 5px 10px; border: 1px solid #ccc; text-decoration: none; color: black; margin-bottom: 5px;}
+        .page-link.active { background-color: #0073e6; color: white; border-color: #0073e6; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CDS vs UTR vs repeat (chr4)</h1>
+        <div>
+            <a href="../../index.html" class="btn">🏠 Home</a>
+            <a href="chr4_raw_data.tsv" class="btn" download>💾 Download Full TSV</a>
+        </div>
+    </div>
+    <p>Showing page 1 of 1 (91 total overlaps found).</p>
+    
+    <table id="overlapTable" class="display">
+        <thead>
+            <tr>
+                <th>Locus</th>
+                <th>Gene / Feature ID</th>
+                <th>Raw Signature</th>
+                <th>Overlap Size (bp)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>chr4:15688694-15688948</td>
+                <td>ENSG00000237765.8|ENSG00000288606.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>254</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:15688694-15688948" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:105970399-105970602</td>
+                <td>ENSG00000168743.13</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>203</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:105970399-105970602" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:166734931-166735035</td>
+                <td>ENSG00000196104.11</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>104</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:166734931-166735035" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:153325781-153325881</td>
+                <td>ENSG00000109654.16|ENSG00000288637.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>100</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:153325781-153325881" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:174331493-174331592</td>
+                <td>ENSG00000164118.13</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>99</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:174331493-174331592" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:53452999-53453097</td>
+                <td>ENSG00000145216.17|ENSG00000282278.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>98</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:53452999-53453097" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:155772601-155772697</td>
+                <td>ENSG00000061918.14</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>96</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:155772601-155772697" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:105275062-105275155</td>
+                <td>ENSG00000168769.14</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>93</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:105275062-105275155" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:144138160-144138243</td>
+                <td>ENSG00000170180.22|ENSG00000251600.9|ENSG00000285783.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>83</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:144138160-144138243" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:103020282-103020361</td>
+                <td>ENSG00000164038.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>79</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:103020282-103020361" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:383130-383207</td>
+                <td>ENSG00000131127.14</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>77</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:383130-383207" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:15688619-15688694</td>
+                <td>ENSG00000237765.8|ENSG00000288606.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>75</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:15688619-15688694" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:6300807-6300882</td>
+                <td>ENSG00000109501.15|ENSG00000286176.2</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>75</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:6300807-6300882" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2655057-2655129</td>
+                <td>ENSG00000125386.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>72</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2655057-2655129" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:55452238-55452303</td>
+                <td>ENSG00000134851.13|ENSG00000134852.15</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>65</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:55452238-55452303" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:146217060-146217123</td>
+                <td>ENSG00000250673.3</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>63</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:146217060-146217123" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:39466016-39466072</td>
+                <td>ENSG00000121897.15</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>56</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:39466016-39466072" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:15481226-15481282</td>
+                <td>ENSG00000048342.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>56</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:15481226-15481282" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:20702140-20702196</td>
+                <td>ENSG00000163138.19</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>56</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:20702140-20702196" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:83264201-83264256</td>
+                <td>ENSG00000173085.15</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>55</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:83264201-83264256" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:4320809-4320863</td>
+                <td>ENSG00000168826.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>54</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:4320809-4320863" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2938273-2938327</td>
+                <td>ENSG00000087269.16|ENSG00000249673.9</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>54</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2938273-2938327" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:141233830-141233883</td>
+                <td>ENSG00000109445.11</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>53</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:141233830-141233883" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:112539558-112539611</td>
+                <td>ENSG00000138658.16|ENSG00000249509.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>53</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:112539558-112539611" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2699737-2699789</td>
+                <td>ENSG00000125386.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>52</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2699737-2699789" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:121816143-121816194</td>
+                <td>ENSG00000123737.13</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>51</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:121816143-121816194" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:121816790-121816840</td>
+                <td>ENSG00000123737.13|ENSG00000145386.11</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>50</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:121816790-121816840" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:53383787-53383836</td>
+                <td>ENSG00000145216.17|ENSG00000282278.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>49</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:53383787-53383836" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:150256155-150256204</td>
+                <td>ENSG00000170390.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>49</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:150256155-150256204" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:87662064-87662113</td>
+                <td>ENSG00000152592.15|ENSG00000249001.6</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>49</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:87662064-87662113" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:53428099-53428145</td>
+                <td>ENSG00000145216.17|ENSG00000282278.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>46</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:53428099-53428145" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2329096-2329141</td>
+                <td>ENSG00000159733.14</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>45</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2329096-2329141" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2228413-2228458</td>
+                <td>ENSG00000130997.16|ENSG00000214367.10|ENSG00000290263.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>45</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2228413-2228458" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:39466072-39466117</td>
+                <td>ENSG00000121897.15</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>45</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:39466072-39466117" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:6105912-6105956</td>
+                <td>ENSG00000152969.21|ENSG00000181215.17</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>44</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:6105912-6105956" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:15688571-15688613</td>
+                <td>ENSG00000237765.8|ENSG00000288606.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>42</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:15688571-15688613" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:185623459-185623500</td>
+                <td>ENSG00000154556.20</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>41</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:185623459-185623500" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:76144214-76144255</td>
+                <td>ENSG00000138750.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>41</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:76144214-76144255" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:169008961-169008999</td>
+                <td>ENSG00000145439.12</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>38</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:169008961-169008999" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:146215075-146215109</td>
+                <td>ENSG00000250673.3</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>34</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:146215075-146215109" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:383094-383127</td>
+                <td>ENSG00000131127.14</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>33</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:383094-383127" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:83407455-83407487</td>
+                <td>ENSG00000163312.11</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>32</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:83407455-83407487" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2812400-2812429</td>
+                <td>ENSG00000087266.17</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>29</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2812400-2812429" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:75542458-75542486</td>
+                <td>ENSG00000174796.12</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>28</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:75542458-75542486" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:76112385-76112412</td>
+                <td>ENSG00000138750.16|ENSG00000156219.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>27</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:76112385-76112412" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:6026251-6026278</td>
+                <td>ENSG00000152969.21|ENSG00000181215.17</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>27</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:6026251-6026278" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:112647201-112647227</td>
+                <td>ENSG00000174720.18|ENSG00000249532.6</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>26</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:112647201-112647227" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:158700883-158700908</td>
+                <td>ENSG00000171503.13|ENSG00000271817.2</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>25</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:158700883-158700908" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:75542486-75542510</td>
+                <td>ENSG00000174796.12</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>24</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:75542486-75542510" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:48546066-48546089</td>
+                <td>ENSG00000075539.15</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>23</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:48546066-48546089" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:26861099-26861122</td>
+                <td>ENSG00000109689.20</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>23</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:26861099-26861122" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:83293573-83293595</td>
+                <td>ENSG00000173083.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>22</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:83293573-83293595" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:6300774-6300796</td>
+                <td>ENSG00000109501.15|ENSG00000286176.2</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>22</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:6300774-6300796" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2938248-2938270</td>
+                <td>ENSG00000087269.16|ENSG00000249673.9</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>22</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2938248-2938270" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:99924793-99924815</td>
+                <td>ENSG00000164031.17</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>22</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:99924793-99924815" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:86890085-86890104</td>
+                <td>ENSG00000163633.12|ENSG00000285458.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>19</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:86890085-86890104" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:56986362-56986381</td>
+                <td>ENSG00000047315.17</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>19</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:56986362-56986381" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:1803819-1803836</td>
+                <td>ENSG00000068078.20</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>17</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:1803819-1803836" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:55386406-55386423</td>
+                <td>ENSG00000249700.9|ENSG00000273257.2|ENSG00000288695.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>17</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:55386406-55386423" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:113537427-113537443</td>
+                <td>ENSG00000145349.20</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>16</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:113537427-113537443" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:20701854-20701869</td>
+                <td>ENSG00000163138.19</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>15</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:20701854-20701869" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:20701869-20701884</td>
+                <td>ENSG00000163138.19</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>15</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:20701869-20701884" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:118736554-118736569</td>
+                <td>ENSG00000150961.15</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>15</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:118736554-118736569" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:20701840-20701854</td>
+                <td>ENSG00000163138.19</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>14</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:20701840-20701854" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:15481212-15481226</td>
+                <td>ENSG00000048342.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>14</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:15481212-15481226" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:15481196-15481209</td>
+                <td>ENSG00000048342.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>13</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:15481196-15481209" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:155352686-155352699</td>
+                <td>ENSG00000164114.19|ENSG00000250910.8</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>13</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:155352686-155352699" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:17865504-17865517</td>
+                <td>ENSG00000178177.17</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>13</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:17865504-17865517" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:522014-522026</td>
+                <td>ENSG00000174227.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>12</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:522014-522026" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:6300796-6300807</td>
+                <td>ENSG00000109501.15|ENSG00000286176.2</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>11</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:6300796-6300807" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:55386395-55386406</td>
+                <td>ENSG00000249700.9|ENSG00000273257.2|ENSG00000288695.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>11</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:55386395-55386406" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:437445-437455</td>
+                <td>ENSG00000182903.16|ENSG00000281016.1|ENSG00000293360.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>10</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:437445-437455" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:2700492-2700501</td>
+                <td>ENSG00000125386.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>9</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:2700492-2700501" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:82905893-82905901</td>
+                <td>ENSG00000168152.13</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>8</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:82905893-82905901" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:522026-522034</td>
+                <td>ENSG00000174227.16</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>8</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:522026-522034" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:112647227-112647235</td>
+                <td>ENSG00000174720.18|ENSG00000249532.6</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>8</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:112647227-112647235" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:168217673-168217680</td>
+                <td>ENSG00000137628.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>7</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:168217673-168217680" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:105970389-105970396</td>
+                <td>ENSG00000168743.13</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>7</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:105970389-105970396" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:141132630-141132637</td>
+                <td>ENSG00000170153.11</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>7</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:141132630-141132637" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:128287818-128287825</td>
+                <td>ENSG00000164040.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>7</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:128287818-128287825" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:15688613-15688619</td>
+                <td>ENSG00000237765.8|ENSG00000288606.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>6</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:15688613-15688619" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:112441202-112441207</td>
+                <td>ENSG00000073331.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>5</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:112441202-112441207" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:113902360-113902365</td>
+                <td>ENSG00000180801.14</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>5</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:113902360-113902365" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:158700874-158700878</td>
+                <td>ENSG00000171503.13|ENSG00000271817.2</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>4</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:158700874-158700878" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:54258756-54258760</td>
+                <td>ENSG00000134853.12|ENSG00000282278.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>4</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:54258756-54258760" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:155352683-155352686</td>
+                <td>ENSG00000164114.19|ENSG00000250910.8</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:155352683-155352686" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:143996301-143996304</td>
+                <td>ENSG00000250361.10|ENSG00000251600.9</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>3</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:143996301-143996304" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:17878211-17878213</td>
+                <td>ENSG00000178177.17</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>2</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:17878211-17878213" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:158700878-158700880</td>
+                <td>ENSG00000171503.13|ENSG00000271817.2</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>2</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:158700878-158700880" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:55386423-55386424</td>
+                <td>ENSG00000249700.9|ENSG00000273257.2|ENSG00000288695.1</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>1</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:55386423-55386424" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+            <tr>
+                <td>chr4:76112412-76112413</td>
+                <td>ENSG00000138750.16|ENSG00000156219.18</td>
+                <td>CDS|UTR|exon|gene|repeat|transcript</td>
+                <td>1</td>
+                <td><a href="https://genome-euro.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr4:76112412-76112413" target="_blank">🧬 View in UCSC</a></td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        
+            <a href="page_1.html" class="page-link active">Page 1</a>
+        
+    </div>
+
+    <script>
+        $(document).ready(function() {$('#overlapTable').DataTable({
+                "order": [[ 3, "desc" ]] 
+            });
+        });
+    </script>
+</body>
+</html>
