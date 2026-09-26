@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genomic Overlap Atlas 2.0</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary: #2563eb;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 50px 20px; background: var(--bg-color); color: var(--text-main); }
+        .container { max-width: 1000px; margin: auto; background: var(--card-bg); padding: 50px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); border: 1px solid var(--border-color); }
+        h1 { color: #0f172a; margin-top: 0; font-size: 32px; display: flex; align-items: center; gap: 12px; }
+        p.subtitle { color: var(--text-muted); font-size: 16px; line-height: 1.6; margin-bottom: 40px; }
+        .category-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+        .card { background: #ffffff; border: 1px solid var(--border-color); border-radius: 12px; padding: 30px; transition: all 0.25s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(37,99,235,0.08); border-color: #93c5fd; }
+        .card h2 { margin-top: 0; color: #0f172a; font-size: 20px; display: flex; align-items: center; gap: 10px; }
+        .card p { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+        .links { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn { background: #eff6ff; color: var(--primary); padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 13px; border: 1px solid #bfdbfe; transition: all 0.2s; }
+        .btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-complex { background: #fefce8; color: #ca8a04; border-color: #fde047; }
+        .btn-complex:hover { background: #ca8a04; color: white; border-color: #ca8a04; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧬 Genomic Overlap Atlas 2.0</h1>
+        <p class="subtitle">An advanced interactive exploration portal for high-confidence structural genomic feature interactions, dual-function overlaps, and regulatory triads across the human genome (hg38). Features live filtering and direct gene-anchored UCSC Genome Browser links.</p>
+        
+        <div class="category-grid">
+            <div class="card">
+                <h2>📁 Protein-Coding / Protein-Coding</h2>
+                <p>Explore gene fusions, alternative splicing conflicts, read-through transcripts, and dense exonic stacking.</p>
+                <div class="links">
+                    <a href="proteincoding-proteincoding/internal/index.html" class="btn">Internal Overlaps</a>
+                    <a href="proteincoding-proteincoding/dual/index.html" class="btn">Dual-Function</a>
+                    <a href="proteincoding-proteincoding/higher_complexity/index.html" class="btn btn-complex">Higher Complexity (Triads)</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📁 Protein-Coding / Non-Coding</h2>
+                <p>Examine regulatory control mechanisms, silencers, enhancers, and structural repeats interrupting coding regions.</p>
+                <div class="links">
+                    <a href="proteincoding-nonproteincoding/internal/index.html" class="btn">Internal Overlaps</a>
+                    <a href="proteincoding-nonproteincoding/dual/index.html" class="btn">Dual-Function</a>
+                    <a href="proteincoding-nonproteincoding/higher_complexity/index.html" class="btn btn-complex">Higher Complexity (Triads)</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📁 Non-Coding / Non-Coding</h2>
+                <p>Investigate gene deserts, pure regulatory networks, long non-coding RNA interactions, and genome organization.</p>
+                <div class="links">
+                    <a href="nonproteincoding-nonproteincoding/internal/index.html" class="btn">Internal Overlaps</a>
+                    <a href="nonproteincoding-nonproteincoding/dual/index.html" class="btn">Dual-Function</a>
+                    <a href="nonproteincoding-nonproteincoding/higher_complexity/index.html" class="btn btn-complex">Higher Complexity (Triads)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

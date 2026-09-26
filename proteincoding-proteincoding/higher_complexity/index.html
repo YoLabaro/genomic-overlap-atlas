@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proteincoding / Proteincoding — Higher Complexity - Genomic Overlap Atlas</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent-bg: #eff6ff;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 30px; background: var(--bg-color); color: var(--text-main); }
+        .container { max-width: 1400px; margin: auto; background: var(--card-bg); padding: 35px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        .breadcrumbs { font-size: 14px; color: var(--text-muted); margin-bottom: 15px; }
+        .breadcrumbs a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .breadcrumbs a:hover { text-decoration: underline; }
+        h1 { margin-top: 0; font-size: 26px; color: #0f172a; }
+        .toolbar { display: flex; justify-content: space-between; align-items: center; margin: 25px 0 15px 0; flex-wrap: wrap; gap: 15px; }
+        .search-box { padding: 10px 14px; width: 320px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+        .search-box:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 14px 16px; border-bottom: 1px solid var(--border-color); text-align: left; font-size: 14px; }
+        th { background-color: #f1f5f9; font-weight: 600; color: #334155; position: sticky; top: 0; }
+        tr:hover { background-color: #f8fafc; }
+        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; color: #475569; }
+        .length-badge { background: var(--accent-bg); color: var(--primary); padding: 4px 10px; border-radius: 20px; font-weight: 600; font-size: 13px; display: inline-block; }
+        .context-tag { background: #f1f5f9; color: #475569; padding: 4px 8px; border-radius: 4px; font-size: 13px; }
+        .btn-ucsc { background: #eff6ff; color: var(--primary); padding: 7px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px; display: inline-block; border: 1px solid #bfdbfe; transition: all 0.2s; }
+        .btn-ucsc:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .pagination { margin-top: 30px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+        .page-btn { padding: 8px 14px; border: 1px solid var(--border-color); border-radius: 6px; text-decoration: none; color: var(--primary); font-size: 14px; background: #fff; font-weight: 500; }
+        .page-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .page-btn:hover:not(.active) { background: #f1f5f9; }
+        .meta-info { font-size: 14px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumbs"><a href="../../../index.html">Home</a> &gt; <span>proteincoding-proteincoding</span> &gt; <span>higher_complexity</span></div>
+        <h1>Proteincoding / Proteincoding — Higher Complexity</h1>
+        <div class="toolbar">
+            <div class="meta-info">Sorted by absolute genomic length (longest to shortest). Page 1 of 1.</div>
+            <input type="text" id="tableSearch" class="search-box" placeholder="🔍 Live filter table (e.g. gene, locus)..." onkeyup="filterTable()">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Locus</th>
+                    <th>Gene / Feature ID</th>
+                    <th>Biological Context</th>
+                    <th>Overlap Size</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="dataTable">
+                
+        <tr>
+            <td class="mono">chr11:300,064-300,397</td>
+            <td><strong>EH38D2412458 | IFITM5_ENSG00000206013.3_ENST00000382614.2</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">333 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr11:299964-300497" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr14:21,057,810-21,058,112</td>
+            <td><strong>EH38D4800183 | RNASE8_ENSG00000173431.2_ENST00000308227.2</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">302 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr14:21057710-21058212" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr17:34,318,575-34,318,859</td>
+            <td><strong>EH38D5004968 | CCL8_ENSG00000108700.5_ENST00000394620.2</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">284 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr17:34318475-34318959" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr11:128,943,597-128,943,871</td>
+            <td><strong>EH38D2513654 | TP53AIP1_ENSG00000120471.17_ENST00000531399.6</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">274 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr11:128943497-128943971" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr20:16,748,556-16,748,808</td>
+            <td><strong>EH38D3282399 | OTOR_ENSG00000125879.5_ENST00000246081.3</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">252 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr20:16748456-16748908" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr20:23,606,576-23,606,826</td>
+            <td><strong>EH38D5316586 | CST9_ENSG00000173335.5_ENST00000376971.4</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">250 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr20:23606476-23606926" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr11:18,599,863-18,600,101</td>
+            <td><strong>EH38D4588202 | MISFA_ENSG00000247595.6_ENST00000635674.2</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">238 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr11:18599763-18600201" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr10:22,218,541-22,218,765</td>
+            <td><strong>EH38D4498204 | EBLN1_ENSG00000223601.5_ENST00000422359.3</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">224 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr10:22218441-22218865" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr1:151,853,677-151,853,884</td>
+            <td><strong>EH38D4421234 | THEM5_ENSG00000196407.12_ENST00000368817.10</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">207 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr1:151853577-151853984" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chrX:153,410,475-153,410,653</td>
+            <td><strong>EH38D6139332 | ZFP92_ENSG00000189420.11_ENST00000338647.7</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">178 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chrX:153410375-153410753" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr7:151,210,585-151,210,758</td>
+            <td><strong>EH38D5909722 | H2BK1_ENSG00000285480.3_ENST00000644661.2</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">173 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr7:151210485-151210858" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr17:49,848,168-49,848,321</td>
+            <td><strong>EH38D5020786 | TAC4_ENSG00000176358.17_ENST00000436235.6</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">153 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr17:49848068-49848421" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+        <tr>
+            <td class="mono">chr3:127,288,985-127,289,046</td>
+            <td><strong>EH38D5490048 | PRR20G_ENSG00000239620.4_ENST00000465482.3</strong></td>
+            <td><span class="context-tag">Enhancer</span></td>
+            <td><span class="length-badge">61 bp</span></td>
+            <td><a href="https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&position=chr3:127288885-127289146" target="_blank" class="btn-ucsc">🧬 View in UCSC</a></td>
+        </tr>
+        
+            </tbody>
+        </table>
+        
+    </div>
+
+    <script>
+    function filterTable() {
+        let input = document.getElementById("tableSearch");
+        let filter = input.value.toLowerCase();
+        let table = document.getElementById("dataTable");
+        let tr = table.getElementsByTagName("tr");
+        for (let i = 0; i < tr.length; i++) {
+            let txtValue = tr[i].textContent || tr[i].innerText;
+            if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+</body>
+</html>
